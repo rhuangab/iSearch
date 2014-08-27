@@ -17,7 +17,8 @@ public class Dictionary {
 	
 	public Dictionary() throws IOException
 	{
-		recman = RecordManagerFactory.createRecordManager("/Library/Tomcat/apache-tomcat-6.0.37/webapps/comp4321/database/MyDictionary");
+		//recman = RecordManagerFactory.createRecordManager("/Library/Tomcat/apache-tomcat-6.0.37/webapps/comp4321/database/MyDictionary");
+		recman = RecordManagerFactory.createRecordManager(new File("src/main/resources/MyDictionary").getAbsolutePath());
 		wordTable = new DataStruc(recman, "dictionary");
 	}
 	

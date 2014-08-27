@@ -16,7 +16,7 @@ import favorite.QueryHistory;
 import jdbm.RecordManager;
 import jdbm.RecordManagerFactory;
 import jdbm.htree.HTree;
-
+import java.io.File;
 public class Query {
 
 	HTree wordIDHash;
@@ -33,8 +33,8 @@ public class Query {
 	
 	public Query() throws IOException
 	{
-			recman = RecordManagerFactory.createRecordManager(this.getClass().getClassLoader().getResource("src/main/resources/MyDatabase").getPath());
-		//recman = RecordManagerFactory.createRecordManager("C:\\Program Files\\Apache Software Foundation\\Tomcat 8.0\\webapps\\COMP4321Beta1\\database\\MyDatabase");
+		System.out.println(new File("./src/main/resources/MyDatabase").getAbsolutePath());
+			recman = RecordManagerFactory.createRecordManager(new File("src/main/resources/MyDatabase").getAbsolutePath());
 		//recman = RecordManagerFactory.createRecordManager("/Library/Tomcat/apache-tomcat-6.0.37/webapps/comp4321/database/MyDatabase");
 		//recman = RecordManagerFactory.createRecordManager("MyDatabase");
 		DataStruc wordID = new DataStruc(recman,"wordID");

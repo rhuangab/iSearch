@@ -63,7 +63,7 @@ public class Result {
 	
 	public void initialize() throws IOException
 	{
-		recman = RecordManagerFactory.createRecordManager(this.getClass().getClassLoader().getResource("src/main/resources/MyDatabase").getPath());
+		recman = RecordManagerFactory.createRecordManager(new File("src/main/resources/MyDatabase").getAbsolutePath());
 		//recman = RecordManagerFactory.createRecordManager("/Library/Tomcat/apache-tomcat-6.0.37/webapps/comp4321/MyDatabase");
 		pageIDTable = new DataStruc(recman,"pageID");
 		wordIDTable = new DataStruc(recman,"wordID");

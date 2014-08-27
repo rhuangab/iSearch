@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Vector;
-
+import java.io.File;
 import jdbm.RecordManager;
 import jdbm.RecordManagerFactory;
 
@@ -18,7 +18,8 @@ public class QueryHistory {
 	public QueryHistory() throws IOException
 	{
 	//recman = RecordManagerFactory.createRecordManager("C:\\Program Files\\Apache Software Foundation\\Tomcat 8.0\\webapps\\COMP4321Beta1\\MyDatabase");
-			recman = RecordManagerFactory.createRecordManager("/Library/Tomcat/apache-tomcat-6.0.37/webapps/comp4321/database/MyDatabase");
+			//recman = RecordManagerFactory.createRecordManager("/Library/Tomcat/apache-tomcat-6.0.37/webapps/comp4321/database/MyDatabase");
+			recman = RecordManagerFactory.createRecordManager(new File("src/main/resources/MyDatabase").getAbsolutePath());
 			//recman = RecordManagerFactory.createRecordManager("MyDatabase");
 			queryHistory = new DataStruc(recman,"queryHisory");
 	}
