@@ -141,7 +141,7 @@ public class PageRank {
 				oneVector = (Vector<String>) childLink.getEntry(keyword);
 				oneWeight = 0;
 				for(String oneId: oneVector) 
-					oneWeight += (double)authHash.get(oneId);
+					oneWeight += (Double)authHash.get(oneId);
 				oneWeight /= totalHubPrev;
 				totalHub += oneWeight * oneWeight;
 				hubWeight.addEntry(keyword, oneWeight);
@@ -157,7 +157,7 @@ public class PageRank {
 				oneVector = (Vector<String>) parentLink.getEntry(keyword);
 				oneWeight = 0;
 				for(String oneId: oneVector)
-					oneWeight += (double)hubPrev.get(oneId);
+					oneWeight += (Double)hubPrev.get(oneId);
 				oneWeight /= totalAuthPrev;
 				totalAuth += oneWeight * oneWeight;
 				authWeight.addEntry(keyword, oneWeight);
@@ -173,9 +173,9 @@ public class PageRank {
  		iter = parentLink.getHash().keys();
  		while( (keyword=(String)iter.next()) != null)
 		{
-			oneWeight = (double) hubWeight.getEntry(keyword);
+			oneWeight = (Double) hubWeight.getEntry(keyword);
 			hubWeight.addEntry(keyword, oneWeight/totalHubPrev);
-			oneWeight = (double) authWeight.getEntry(keyword);
+			oneWeight = (Double) authWeight.getEntry(keyword);
 			authWeight.addEntry(keyword, oneWeight/totalAuthPrev);
 		}
  		printHubAuth();
@@ -230,7 +230,7 @@ public class PageRank {
 				for(String oneId: oneParents) 
 				{
 					oneChildren = (Vector<String>) childLink.getEntry(oneId);
-					oneWeight += ((double)rankPrev.get(oneId)) / oneChildren.size();
+					oneWeight += ((Double)rankPrev.get(oneId)) / oneChildren.size();
 				}
 				oneWeight = (1-d) + d * oneWeight;
 				pageRank.addEntry(keyword, oneWeight);
@@ -246,17 +246,17 @@ public class PageRank {
 	
 	double getPageRank (String page_id) throws IOException
 	{
-		return (double)pageRank.getEntry(page_id);
+		return (Double)pageRank.getEntry(page_id);
 	}
 	
 	int getHubWeight (String page_id) throws IOException
 	{
-		return (int)hubWeight.getEntry(page_id);
+		return (Integer)hubWeight.getEntry(page_id);
 	}
 	
 	int getAuthWeight (String page_id) throws IOException
 	{
-		return (int)authWeight.getEntry(page_id);
+		return (Integer)authWeight.getEntry(page_id);
 	}
 	
 	public void printHubAuth() throws IOException
